@@ -88,7 +88,7 @@ public class Calculator extends JFrame{
         // calculate
         equal.addActionListener( new ActionListener() {
         	public void actionPerformed(ActionEvent arg) {
-	        	double num1 = Double.parseDouble(a.getText().trim());
+	        	double num1 = Double.parseDouble(a.getText().trim();
 	        	double num2 = Double.parseDouble(b.getText().trim());
 
 	        	String operator = op.getText();
