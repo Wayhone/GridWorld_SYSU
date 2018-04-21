@@ -51,6 +51,7 @@ Expection:   The jumper would turn 45 degree to the right.
 Explanation: Test what will a jumper do if the location two cells in front of the jumper is out of the grid.  
 Expection:   The jumper would turn 45 degree to the right.  
 ```java
+	@Test
 	public void testOutOfGrid() {
 		world.add(new Location(1, 5), jumper1);
 		jumper1.act();
