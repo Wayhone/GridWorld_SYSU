@@ -28,7 +28,6 @@ public class KingCrab extends CrabCritter
         Location kings = getLocation();
         Location loc = it.getLocation();
         int dir = loc.getDirectionToward(kings) + Location.HALF_CIRCLE;
-        it.setDirection(loc.getDirectionToward(kings) + Location.HALF_CIRCLE);
         Location next = loc.getAdjacentLocation(dir);
 
         Grid<Actor> gr = getGrid();
