@@ -45,7 +45,7 @@ class ColorFilter extends RGBImageFilter{
 				return (rgb & 0xff00ff00);
 			case 3:
 				return (rgb & 0xff0000ff);
-			case 4:
+			default:
 				int r, g, b, grey;
 				r = rgb & 0x00ff0000;
 				g = rgb & 0x0000ff00;

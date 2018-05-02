@@ -6,9 +6,10 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.*;
 import java.awt.Graphics2D;
+import javax.imageio.ImageIO;
 
 
-public class ImplementImagaIO implements IImageIO{
+public class ImplementImageIO implements IImageIO{
 
 	public int byteToInt(byte[] b, int start)
 	{
@@ -22,7 +23,7 @@ public class ImplementImagaIO implements IImageIO{
 
 	public Image myRead(String filePath){
 		try{
-			Image img;
+			Image img = (Image)null;
 			File file = new File(filePath);
 			FileInputStream fin = new FileInputStream(file);
 
@@ -79,7 +80,7 @@ public class ImplementImagaIO implements IImageIO{
 		return (Image)null;
 	}
 
-	public Image MyWrite(Image image, String filePath){
+	public Image myWrite(Image image, String filePath){
 		try{
 			File imgFile = new File(filePath + "bmp");
 			BufferedImage buffer = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
