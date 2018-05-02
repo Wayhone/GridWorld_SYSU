@@ -12,6 +12,8 @@ public class SparseGridRunner
 	public static void main(String[] args){
 		ActorWorld world = new ActorWorld();
 		// To add Grid Class to the world
+		world.addGridClass("SparseBoundedGrid");
+		world.addGridClass("SparseBoundedGrid2");
 		world.addGridClass("UnboundedGrid2");
 		world.add(new Location(2, 2), new Critter());
 		world.show();
