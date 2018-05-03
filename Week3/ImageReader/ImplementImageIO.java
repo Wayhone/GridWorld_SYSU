@@ -2,6 +2,7 @@
 import imagereader.IImageIO;
 
 import java.awt.image.*;
+import java.awt.image.ImageProducer;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.*;
@@ -21,9 +22,11 @@ public class ImplementImageIO implements IImageIO{
 		return (t1 << 24 | t2 << 16 | t3 << 8 | t4); 
 	}
 
+	Image img ;
+
 	public Image myRead(String filePath){
 		try{
-			Image img = (Image)null;
+			
 			File file = new File(filePath);
 			FileInputStream fin = new FileInputStream(file);
 
@@ -56,7 +59,7 @@ public class ImplementImageIO implements IImageIO{
 				int index = 0;
 
 				// 从下到上，从左到右存储图像
-				for (int i = 0; i < biHeight; i++)
+				for (int i = biHeight - 1; i >= 0; i--)
 				{
 					for (int j = 0; j < biWidth; j++)
 					{
@@ -68,8 +71,7 @@ public class ImplementImageIO implements IImageIO{
 					// 补齐空白字节
 				}
 
-				img = Toolkit.getDefaultToolkit().createImage((ImageProducer)new MemoryImageSource(
-					biWidth, biHeight, pixel, 0, biWidth));	
+				img = Toolkit.getDefaultToolkit().createImage(new MemoryImageSource(biWidth, biHeight, pixel, 0, biWidth));	
 			}	
 
 			fin.close();
@@ -82,7 +84,7 @@ public class ImplementImageIO implements IImageIO{
 
 	public Image myWrite(Image image, String filePath){
 		try{
-			File imgFile = new File(filePath + "bmp");
+			File imgFile = new File(filePath + "-BMP.bmp");
 			BufferedImage buffer = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
 			Graphics2D graph = buffer.createGraphics(); 
 			graph.drawImage(image, 0, 0, null);

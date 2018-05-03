@@ -51,7 +51,7 @@ class ColorFilter extends RGBImageFilter{
 				g = rgb & 0x0000ff00;
 				b = rgb & 0x000000ff;
 				grey = (int)((r >> 16) * 0.299 + (g  >> 8) * 0.587 + b * 0.114);
-				return (rgb & 0xff000000) + grey << 16 + grey << 8 + grey;
+				return (rgb & 0xff000000) + (grey << 16) + (grey << 8) + grey;
 		}
 	}
 }
