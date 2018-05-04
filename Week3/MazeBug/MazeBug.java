@@ -1,4 +1,3 @@
-package info.gridworld.maze;
 
 import info.gridworld.actor.*;
 import info.gridworld.grid.*;
