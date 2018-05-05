@@ -7,31 +7,31 @@ import jigsaw.JigsawNode;
 
 
 /**
- * ÔÚ´ËÀàÖĞÌî³äËã·¨£¬Íê³ÉÖØÆ´Í¼ÓÎÏ·£¨N-ÊıÂëÎÊÌâ£©
+ * åœ¨æ­¤ç±»ä¸­å¡«å……ç®—æ³•ï¼Œå®Œæˆé‡æ‹¼å›¾æ¸¸æˆï¼ˆN-æ•°ç é—®é¢˜ï¼‰
  */
 public class Solution extends Jigsaw {
 
     /**
-     * Æ´Í¼¹¹Ôìº¯Êı
+     * æ‹¼å›¾æ„é€ å‡½æ•°
      */
     public Solution() {
     }
 
     /**
-     * Æ´Í¼¹¹Ôìº¯Êı
-     * @param bNode - ³õÊ¼×´Ì¬½Úµã
-     * @param eNode - Ä¿±ê×´Ì¬½Úµã
+     * æ‹¼å›¾æ„é€ å‡½æ•°
+     * @param bNode - åˆå§‹çŠ¶æ€èŠ‚ç‚¹
+     * @param eNode - ç›®æ ‡çŠ¶æ€èŠ‚ç‚¹
      */
     public Solution(JigsawNode bNode, JigsawNode eNode) {
         super(bNode, eNode);
     }
 
     /**
-     *£¨ÊµÑéÒ»£©¹ã¶ÈÓÅÏÈËÑË÷Ëã·¨£¬ÇóÖ¸¶¨5*5Æ´Í¼£¨24-ÊıÂëÎÊÌâ£©µÄ×îÓÅ½â
-     * Ìî³ä´Ëº¯Êı£¬¿ÉÔÚSolutionÀàÖĞÌí¼ÓÆäËûº¯Êı£¬ÊôĞÔ
-     * @param bNode - ³õÊ¼×´Ì¬½Úµã
-     * @param eNode - Ä¿±ê×´Ì¬½Úµã
-     * @return ËÑË÷³É¹¦Ê±Îªtrue,Ê§°ÜÎªfalse
+     *ï¼ˆå®éªŒä¸€ï¼‰å¹¿åº¦ä¼˜å…ˆæœç´¢ç®—æ³•ï¼Œæ±‚æŒ‡å®š5*5æ‹¼å›¾ï¼ˆ24-æ•°ç é—®é¢˜ï¼‰çš„æœ€ä¼˜è§£
+     * å¡«å……æ­¤å‡½æ•°ï¼Œå¯åœ¨Solutionç±»ä¸­æ·»åŠ å…¶ä»–å‡½æ•°ï¼Œå±æ€§
+     * @param bNode - åˆå§‹çŠ¶æ€èŠ‚ç‚¹
+     * @param eNode - ç›®æ ‡çŠ¶æ€èŠ‚ç‚¹
+     * @return æœç´¢æˆåŠŸæ—¶ä¸ºtrue,å¤±è´¥ä¸ºfalse
      */
     public boolean BFSearch(JigsawNode bNode, JigsawNode eNode) {
         //this.visitedList = new HashSet<>(1000);
@@ -45,18 +45,18 @@ public class Solution extends Jigsaw {
 
         final int DIRS = 4;
 
-        // ÖØÖÃÇó½â±ê¼Ç
+        // é‡ç½®æ±‚è§£æ ‡è®°
         int mySearchedNodesNum = 0;
 
-        // (1)½«ÆğÊ¼½Úµã·ÅÈëopenListÖĞ
+        // (1)å°†èµ·å§‹èŠ‚ç‚¹æ”¾å…¥openListä¸­
         openList.add(this.beginJNode);
 
-        // (2) Èç¹ûexploreListÎª¿Õ£¬ÔòËÑË÷Ê§°Ü£¬ÎÊÌâÎŞ½â;·ñÔòÑ­»·Ö±µ½Çó½â³É¹¦
+        // (2) å¦‚æœexploreListä¸ºç©ºï¼Œåˆ™æœç´¢å¤±è´¥ï¼Œé—®é¢˜æ— è§£;å¦åˆ™å¾ªç¯ç›´åˆ°æ±‚è§£æˆåŠŸ
         while (!openList.isEmpty()) {
             mySearchedNodesNum++;
 
-            // (2-1)È¡³öexploreListµÄµÚÒ»¸ö½ÚµãN£¬ÖÃÎªµ±Ç°½ÚµãcurrentJNode
-            //      ÈôcurrentJNodeÎªÄ¿±ê½Úµã£¬ÔòËÑË÷³É¹¦£¬¼ÆËã½âÂ·¾¶£¬ÍË³ö
+            // (2-1)å–å‡ºexploreListçš„ç¬¬ä¸€ä¸ªèŠ‚ç‚¹Nï¼Œç½®ä¸ºå½“å‰èŠ‚ç‚¹currentJNode
+            //      è‹¥currentJNodeä¸ºç›®æ ‡èŠ‚ç‚¹ï¼Œåˆ™æœç´¢æˆåŠŸï¼Œè®¡ç®—è§£è·¯å¾„ï¼Œé€€å‡º
             this.currentJNode = openList.get(0);
             if (this.currentJNode.equals(eNode)) {
                 this.getPath();
@@ -68,14 +68,14 @@ public class Solution extends Jigsaw {
                 new JigsawNode(this.currentJNode), new JigsawNode(this.currentJNode)
             };
 
-            // (2-2)Ñ°ÕÒËùÓĞÓëcurrentJNodeÁÚ½ÓÇÒÎ´Ôø±»·¢ÏÖµÄ½Úµã£¬½«ËüÃÇ²åÈëopenListÖĞ
+            // (2-2)å¯»æ‰¾æ‰€æœ‰ä¸currentJNodeé‚»æ¥ä¸”æœªæ›¾è¢«å‘ç°çš„èŠ‚ç‚¹ï¼Œå°†å®ƒä»¬æ’å…¥openListä¸­
             for (int i = 0; i < DIRS; i++) {
                 if (nextNodes[i].move(i) && !openList.contains(nextNodes[i]) && !closeList.contains(nextNodes[i])) {
                             openList.add(nextNodes[i]);
                 }
             }
             
-            // (2-3)ÔÚopenListÖĞÉ¾³ıµ±Ç°½Úµã£¬¼ÓÈëµ½closeListÖĞ
+            // (2-3)åœ¨openListä¸­åˆ é™¤å½“å‰èŠ‚ç‚¹ï¼ŒåŠ å…¥åˆ°closeListä¸­
             openList.remove(currentJNode);
             closeList.add(currentJNode);    
             
@@ -93,14 +93,14 @@ public class Solution extends Jigsaw {
 
 
     /**
-     *£¨Demo+ÊµÑé¶ş£©¼ÆËã²¢ĞŞ¸Ä×´Ì¬½ÚµãjNodeµÄ´ú¼Û¹À¼ÆÖµ:f(n)
-     * Èç f(n) = s(n). s(n)´ú±íºóĞø½Úµã²»ÕıÈ·µÄÊıÂë¸öÊı
-     * ´Ëº¯Êı»á¸Ä±ä¸Ã½ÚµãµÄestimatedValueÊôĞÔÖµ
-     * ĞŞ¸Ä´Ëº¯Êı£¬¿ÉÔÚSolutionÀàÖĞÌí¼ÓÆäËûº¯Êı£¬ÊôĞÔ
-     * @param jNode - Òª¼ÆËã´ú¼Û¹À¼ÆÖµµÄ½Úµã
+     *ï¼ˆDemo+å®éªŒäºŒï¼‰è®¡ç®—å¹¶ä¿®æ”¹çŠ¶æ€èŠ‚ç‚¹jNodeçš„ä»£ä»·ä¼°è®¡å€¼:f(n)
+     * å¦‚ f(n) = s(n). s(n)ä»£è¡¨åç»­èŠ‚ç‚¹ä¸æ­£ç¡®çš„æ•°ç ä¸ªæ•°
+     * æ­¤å‡½æ•°ä¼šæ”¹å˜è¯¥èŠ‚ç‚¹çš„estimatedValueå±æ€§å€¼
+     * ä¿®æ”¹æ­¤å‡½æ•°ï¼Œå¯åœ¨Solutionç±»ä¸­æ·»åŠ å…¶ä»–å‡½æ•°ï¼Œå±æ€§
+     * @param jNode - è¦è®¡ç®—ä»£ä»·ä¼°è®¡å€¼çš„èŠ‚ç‚¹
      */
     public void estimateValue(JigsawNode jNode) {
-        int s = 0; // ºóĞø½Úµã²»ÕıÈ·µÄÊıÂë¸öÊı
+        int s = 0; // åç»­èŠ‚ç‚¹ä¸æ­£ç¡®çš„æ•°ç ä¸ªæ•°
         int mhDis = 0;
         int euDis = 0;
         int dimension = JigsawNode.getDimension();
