@@ -1,6 +1,7 @@
 package solution;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import jigsaw.Jigsaw;
 import jigsaw.JigsawNode;
@@ -37,7 +38,8 @@ public class Solution extends Jigsaw {
         //this.visitedList = new HashSet<>(1000);
         //this.exploreList = new Queue<>(500);
         ArrayList<JigsawNode> openList = new ArrayList<JigsawNode>();
-        ArrayList<JigsawNode> closeList = new ArrayList<JigsawNode>();
+        HashSet<JigsawNode> open_hash = new HashSet<JigsawNode>();
+        HashSet<JigsawNode> close_hash = new HashSet<JigsawNode>();
 
         this.beginJNode = new JigsawNode(bNode);
         this.endJNode = new JigsawNode(eNode);
@@ -50,6 +52,7 @@ public class Solution extends Jigsaw {
 
         // (1)将起始节点放入openList中
         openList.add(this.beginJNode);
+        open_hash.add(this.beginJNode);
 
         // (2) 如果exploreList为空，则搜索失败，问题无解;否则循环直到求解成功
         while (!openList.isEmpty()) {
@@ -70,14 +73,16 @@ public class Solution extends Jigsaw {
 
             // (2-2)寻找所有与currentJNode邻接且未曾被发现的节点，将它们插入openList中
             for (int i = 0; i < DIRS; i++) {
-                if (nextNodes[i].move(i) && !openList.contains(nextNodes[i]) && !closeList.contains(nextNodes[i])) {
+                if (nextNodes[i].move(i) && !open_hash.contains(nextNodes[i]) && !close_hash.contains(nextNodes[i])) {
                             openList.add(nextNodes[i]);
+                            open_hash.add(nextNodes[i]);
                 }
             }
             
             // (2-3)在openList中删除当前节点，加入到closeList中
             openList.remove(currentJNode);
-            closeList.add(currentJNode);    
+            open_hash.remove(currentJNode);
+            close_hash.add(currentJNode);    
             
         }
 
